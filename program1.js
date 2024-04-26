@@ -1,31 +1,30 @@
- 
-    function smallestMissingPositiveInteger(nums) {
-      const n = nums.length;
-      
-       let j = 0;
-      for (let i = 0; i < n; i++) {
-          if (nums[i] <= 0) {
-              [nums[i], nums[j]] = [nums[j], nums[i]];
-              j++;
-          }
+function smallestMissingPositiveInteger(nums) {
+  const n = nums.length;
+  
+   let j = 0;
+  for (let i = 0; i < n; i++) {
+      if (nums[i] <= 0) {
+          [nums[i], nums[j]] = [nums[j], nums[i]];
+          j++;
       }
-      
-       const positiveNumber = nums.slice(j);
-      
-       for (let i = 0; i < positiveNumber.length; i++) {
-          const index = Math.abs(positiveNumber[i]) - 1;
-          if (index < positiveNumber.length && positiveNumber[index] > 0) {
-            positiveNumber[index] = -positiveNumber[index];
-          }
-      }
-      
-       for (let i = 0; i < positiveNumber.length; i++) {
-          if (positiveNumber[i] > 0) {
-              return i + 1;
-          }
-      }
-      
-       return positiveNumber.length + 1;
   }
-    
-  module.exports = smallestMissingPositiveInteger;
+  
+   const x = nums.slice(j);
+  
+   for (let i = 0; i < x.length; i++) {
+      const index = Math.abs(x[i]) - 1;
+      if (index < x.length && x[index] > 0) {
+          x[index] = -x[index];
+      }
+  }
+  
+   for (let i = 0; i < x.length; i++) {
+      if (x[i] > 0) {
+          return i + 1;
+      }
+  }
+  
+   return x.length + 1;
+}
+
+module.exports = smallestMissingPositiveInteger;
